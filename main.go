@@ -40,16 +40,7 @@ func (b *BookstoreImpl) GetBook(id int) (*Book, error) {
 	return nil, fmt.Errorf("Book with ID %v Not Found", id)
 }
 
-//Membuat fungsi mengahapus buku
-func (b *BookstoreImpl) DeleteBook(id int) error {
-	for i, book := range b.books {
-		if book.ID == id {
-			b.books = append(b.books[:i], b.books[i+1:]...)
-			return nil
-		}
-	}
-	return fmt.Errorf("Book with ID %v Not Found", id)
-}
+
 
 func main() {
 	// Membuat objek BookstoreImpl
@@ -82,14 +73,7 @@ func main() {
 			book.ID, book.Title, book.Author, book.Quantity, book.Available)
 	}
 
-	//Prosess Mendelete Buku
-	booksID := 3
-	err = bookstore.DeleteBook(booksID)
-	if err != nil {
-		fmt.Printf("Failed Delete books with ID %v: %v\n", bookID, err)
-	} else {
-		fmt.Printf("Books with ID %v has been succesfully deleted\n", bookID)
-	}
+
 
 	// Cetak data buku yang sudah ditambahkan
 	fmt.Printf("The list of books was succesfully added:\n")
